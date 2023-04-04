@@ -1,0 +1,22 @@
+
+dependencies {
+    // none
+}
+
+
+/**########## task START ##########**/
+tasks.jar {
+    enabled = true
+    archiveFileName   = "${deployFileName}"
+    archiveClassifier = ""
+
+/*
+    archiveFileName.set("${deployFileName}")
+    archiveClassifier.set("") // -plain 접미사 방지 구문
+*/
+}
+
+tasks.bootJar {
+    enabled = false
+}
+/**########## task END ##########**/

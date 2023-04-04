@@ -1,0 +1,38 @@
+plugins {
+    id "war"
+}
+
+dependencies {
+    
+    implementation "javax.servlet:jstl"
+
+    // spring-cloud-starter-sleuth & spring-cloud-sleuth-zipkin
+//    implementation "org.springframework.cloud:spring-cloud-starter-sleuth"
+//    implementation "org.springframework.cloud:spring-cloud-sleuth-zipkin"
+
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    
+    providedRuntime "org.springframework.boot:spring-boot-starter-tomcat" //war 배포시
+    //implementation "org.springframework.boot:spring-boot-starter-tomcat" //jar 배포시
+}
+
+/**########## task START ##########**/
+tasks.war {
+    enabled = true
+    archiveFileName = "${deployFileName}"
+
+    doLast {
+        println("${thisProjectName}[war doLast] deploy profile [" + currentProfile + "]")
+    }
+}
+
+tasks.bootWar {
+    enabled=false
+}
+
+tasks.register("copyTest", Copy){
+    from "${buildDir}/resources/main/static"
+    into "${buildDir}/webStatic"
+}
+
+/**########## task END ##########**/
