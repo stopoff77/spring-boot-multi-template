@@ -20,7 +20,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "${rootProjectName}" //"sb2-zRoot" (//FIXME CHECK-project name 확인)
+rootProject.name = "${rootProjectName}" //"sb2-zRoot" (// FIXME CHECK-project name 확인)
 
 
 include "sb2-multi-template-cmmnlib"
