@@ -1,21 +1,21 @@
 
 plugins {
-    id "java"
-    id "maven-publish"
-    id "project-report"
-    id "eclipse"
-    id "eclipse-wtp"
-    id "org.springframework.boot"        version "${springBootVersion}"
-    id "io.spring.dependency-management" version "${springDependencyManagementVersion}"
-    id "org.hidetake.ssh"                version "${hidetakeSshVersion}"
+    id 'java'
+    id 'maven-publish'
+    id 'project-report'
+    id 'eclipse'
+    id 'eclipse-wtp'
+    id 'org.springframework.boot'        version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    id 'org.hidetake.ssh'                version "${hidetakeSshVersion}"
 }
 
 ext {
-    DEV = "dev"
-    STG = "stg"
-    PRD = "prd"
-    if (!project.hasProperty("profile") || !profile) {
-        ext.profile = DEV //"dev"
+    DEV = 'dev'
+    STG = 'stg'
+    PRD = 'prd'
+    if (!project.hasProperty('profile') || !profile) {
+        ext.profile = DEV //'dev'
     }
 
     currentProfile  = "${profile}" // 환경에 따른 배포를 위한 변수    
@@ -56,14 +56,14 @@ allprojects {
 }
 
 subprojects {
-    apply plugin: "java"
-    apply plugin: "maven-publish"
-    apply plugin: "project-report"
-    apply plugin: "eclipse"
-    apply plugin: "eclipse-wtp"
-    apply plugin: "org.springframework.boot"
-    apply plugin: "io.spring.dependency-management"
-    apply plugin: "org.hidetake.ssh"
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    apply plugin: 'project-report'
+    apply plugin: 'eclipse'
+    apply plugin: 'eclipse-wtp'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.hidetake.ssh'
 
     group   = "${projectGroup}"
     version = "${projectVersion}"
@@ -72,7 +72,7 @@ subprojects {
     [compileJava, compileTestJava]*.options*.encoding = "${javaEncoding}" // 소스 인코딩 지정밥법 1
 
     // build directory (default - build)
-    //buildDir = "target"
+    //buildDir = 'target'
 
     dependencyManagement {
         imports {
@@ -88,16 +88,16 @@ subprojects {
 
     sourceSets {
         main {
-            java.srcDirs = ["src/main/java"]
+            java.srcDirs = ['src/main/java']
 
-            if(project.hasProperty( "profile" )) {
+            if(project.hasProperty( 'profile' )) {
                 // resource에 src/main/java 패키지 제외하고 build하기
-                //resources.srcDirs = ["src/main/resources", "src/main/resources-${profile}"]
+                //resources.srcDirs = ['src/main/resources', "src/main/resources-${profile}"]
 
                 // resource에 src/main/java 패키지 내 xml 파일 포함하여 build하기
-                resources.srcDirs = ["src/main/java", "src/main/resources", "src/main/resources-${profile}"]
+                resources.srcDirs = ['src/main/java', 'src/main/resources', "src/main/resources-${profile}"]
 
-                //resources.excludes = ["**/sample", "**/sample*", "**/sample/*"]
+                //resources.excludes = ['**/sample', '**/sample*', '**/sample/*']
             }
         }
     }
@@ -109,20 +109,20 @@ subprojects {
         /** lombok & spring-boot-devtools */
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
-        //testAnnotationProcessor "org.projectlombok:lombok:1.18.22"
-        //testCompileOnly "org.projectlombok:lombok:1.18.22"
-        developmentOnly "org.springframework.boot:spring-boot-devtools"
+        //testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+        //testCompileOnly 'org.projectlombok:lombok:1.18.22'
+        developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 
         /** spring-boot */
-        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-        implementation      "org.springframework.boot:spring-boot-actuator-autoconfigure"
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        implementation      'org.springframework.boot:spring-boot-actuator-autoconfigure'
 
         /** spring-boot-starter */
-        implementation "org.springframework.boot:spring-boot-starter-aop"
-        implementation "org.springframework.boot:spring-boot-starter-web"
-        implementation "org.springframework.boot:spring-boot-starter-webflux"
-        implementation "org.springframework.boot:spring-boot-starter-validation"
+        implementation 'org.springframework.boot:spring-boot-starter-aop'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
 
         /** mybatis-spring-boot-starter */
         implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisSpringBootVersion}"
@@ -131,72 +131,72 @@ subprojects {
         implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:${jasyptSpringBootVersion}"
 
         /** test dependency */
-        testImplementation("org.springframework.boot:spring-boot-starter-test") {
-           exclude group : "org.junit.vintage", module : "junit-vintage-engine"
-           //exclude module : "org.junit.vintage:junit-vintage-engine"
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+           exclude group : 'org.junit.vintage', module : 'junit-vintage-engine'
+           //exclude module : 'org.junit.vintage:junit-vintage-engine'
         }
-        testImplementation "io.projectreactor:reactor-test"
+        testImplementation 'io.projectreactor:reactor-test'
         testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
         testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
-        testImplementation "org.junit.platform:junit-platform-runner:1.7.1"
+        testImplementation 'org.junit.platform:junit-platform-runner:1.7.1'
 
 
         /** jetty for webClient Loging */
-        //implementation "org.eclipse.jetty:jetty-reactive-httpclient:1.1.12"
+        //implementation 'org.eclipse.jetty:jetty-reactive-httpclient:1.1.12'
         implementation ("org.eclipse.jetty:jetty-reactive-httpclient:${jettyReactiveHttpclientVersion}") {
-            exclude module: "jetty-client"
-            exclude group : "org.slf4j"
+            exclude module: 'jetty-client'
+            exclude group : 'org.slf4j'
         }
         implementation ("org.eclipse.jetty:jetty-client:${jettyClientVersion}") {
-            exclude module: "jetty-alpn-client"
-            exclude module: "jetty-http"
-            exclude module: "jetty-io"
-            exclude module: "jetty-util"
-            exclude module: "slf4j-api"
+            exclude module: 'jetty-alpn-client'
+            exclude module: 'jetty-http'
+            exclude module: 'jetty-io'
+            exclude module: 'jetty-util'
+            exclude module: 'slf4j-api'
         }
         implementation ("org.eclipse.jetty:jetty-alpn-client:${jettyClientVersion}") {
-            exclude module: "jetty-io"
-            exclude module: "jetty-util"
-            exclude module: "slf4j-api"
+            exclude module: 'jetty-io'
+            exclude module: 'jetty-util'
+            exclude module: 'slf4j-api'
         }
         implementation ("org.eclipse.jetty:jetty-http:${jettyClientVersion}") {
-            exclude module: "jetty-io"
-            exclude module: "jetty-util"
-            exclude module: "slf4j-api"
+            exclude module: 'jetty-io'
+            exclude module: 'jetty-util'
+            exclude module: 'slf4j-api'
         }
         implementation ("org.eclipse.jetty:jetty-io:${jettyClientVersion}") {
-            exclude module: "jetty-util"
-            exclude module: "slf4j-api"
+            exclude module: 'jetty-util'
+            exclude module: 'slf4j-api'
         }
         implementation ("org.eclipse.jetty:jetty-util:${jettyClientVersion}") {
-            exclude module: "slf4j-api"
+            exclude module: 'slf4j-api'
         }
 
 
         /** apache-commons */
-        implementation "commons-beanutils:commons-beanutils:1.9.4"
-        implementation "commons-codec:commons-codec:1.15"
-        implementation "commons-io:commons-io:2.11.0"
-        implementation "org.apache.commons:commons-collections4:4.4"
-        implementation "org.apache.commons:commons-lang3:3.12.0"
-        implementation "org.apache.commons:commons-text:1.9"
-        implementation "commons-fileupload:commons-fileupload:1.4" // file upload
+        implementation 'commons-beanutils:commons-beanutils:1.9.4'
+        implementation 'commons-codec:commons-codec:1.15'
+        implementation 'commons-io:commons-io:2.11.0'
+        implementation 'org.apache.commons:commons-collections4:4.4'
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+        implementation 'org.apache.commons:commons-text:1.9'
+        implementation 'commons-fileupload:commons-fileupload:1.4' // file upload
 
         /** xss - lucy by naver */      
-        implementation("com.navercorp.lucy:lucy-xss-servlet:2.0.1")
+        implementation('com.navercorp.lucy:lucy-xss-servlet:2.0.1')
 
         /** org.json */
-        implementation group: "org.json", name: "json", version: "20211205"
+        implementation group: 'org.json', name: 'json', version: '20211205'
 
-        //implementation "com.fasterxml.jackson.core:jackson-annotations"
-        //implementation "com.fasterxml.jackson.core:jackson-core"
-        //implementation "com.fasterxml.jackson.core:jackson-databind"
+        //implementation 'com.fasterxml.jackson.core:jackson-annotations'
+        //implementation 'com.fasterxml.jackson.core:jackson-core'
+        //implementation 'com.fasterxml.jackson.core:jackson-databind'
 
         /** message for yaml */
-        implementation "dev.akkinoc.util:yaml-resource-bundle:2.0.2"
+        implementation 'dev.akkinoc.util:yaml-resource-bundle:2.0.2'
 
         /** findbugs */
-        implementation "com.google.code.findbugs:jsr305:3.0.2"
+        implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     }
 
@@ -211,11 +211,11 @@ subprojects {
     }
 
     // dependencies tree list task - gradle depencencyTreeList
-    tasks.register("depencencyTreeList", DependencyReportTask) {
+    tasks.register('depencencyTreeList', DependencyReportTask) {
         //
     }
 
-    tasks.register("initSourceFolders") {
+    tasks.register('initSourceFolders') {
         sourceSets*.java.srcDirs*.each {
             if( !it.exists() ) {
                 it.mkdirs()
@@ -246,9 +246,9 @@ subprojects {
 
 
 
-project(":sb2-multi-template-web") {
+project(':sb2-multi-template-web') {
     dependencies {
-        implementation project(":sb2-multi-template-cmmnlib")
+        implementation project(':sb2-multi-template-cmmnlib')
     }
 }
 

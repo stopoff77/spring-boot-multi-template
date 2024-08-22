@@ -1,19 +1,19 @@
 plugins {
-    id "war"
+    id 'war'
 }
 
 dependencies {
     
-    implementation "javax.servlet:jstl"
+    implementation 'javax.servlet:jstl'
 
     // spring-cloud-starter-sleuth & spring-cloud-sleuth-zipkin
-//    implementation "org.springframework.cloud:spring-cloud-starter-sleuth"
-//    implementation "org.springframework.cloud:spring-cloud-sleuth-zipkin"
+//    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+//    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
 
-    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     
-    providedRuntime "org.springframework.boot:spring-boot-starter-tomcat" //war 배포시
-    //implementation "org.springframework.boot:spring-boot-starter-tomcat" //jar 배포시
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' //war 배포시
+    //implementation 'org.springframework.boot:spring-boot-starter-tomcat' //jar 배포시
 }
 
 /**########## task START ##########**/
@@ -30,7 +30,7 @@ tasks.bootWar {
     enabled=false
 }
 
-tasks.register("copyTest", Copy){
+tasks.register('copyTest', Copy){
     from "${buildDir}/resources/main/static"
     into "${buildDir}/webStatic"
 }
