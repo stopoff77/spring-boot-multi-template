@@ -231,7 +231,8 @@ subprojects {
 
     // resources, resources-${profile} copy 할 때 duplicatesStrategy 설정 하기
     tasks.processResources {
-        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        duplicatesStrategy(DuplicatesStrategy.WARN)
+        //duplicatesStrategy = DuplicatesStrategy.INCLUDE
         //duplicatesStrategy = DuplicatesStrategy.WARN
 
         // compileJava 후 실행
