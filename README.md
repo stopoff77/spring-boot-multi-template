@@ -17,3 +17,8 @@
  * limitations under the License.
  * */
 ~~~
+<br />
+gradle.properties의 rootProjectName
+<br />
+setting.gradle의 include
+<br />
