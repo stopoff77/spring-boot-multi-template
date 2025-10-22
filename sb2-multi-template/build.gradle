@@ -26,9 +26,23 @@ ext {
     isDEV = currentProfile == DEV
     isSTG = currentProfile == STG
     isPRD = currentProfile == PRD
+
+
+    currentDate = {
+        def dateFormat = 'yyyyMMdd_HHmmss'
+//        return new Date().format(dateFormat)
+
+        def date = new Date()
+        def formattedDate = date.format(dateFormat)
+
+        return formattedDate
+    }
+
+
     println(isDEV)
     println(isSTG)
     println(isPRD)
+    println(currentDate())
 }
 
 allprojects {
