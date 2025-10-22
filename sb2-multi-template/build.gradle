@@ -42,7 +42,7 @@ ext {
     println(isDEV)
     println(isSTG)
     println(isPRD)
-    println(currentDate())
+    println(rootProject.ext.currentDate())
 }
 
 allprojects {

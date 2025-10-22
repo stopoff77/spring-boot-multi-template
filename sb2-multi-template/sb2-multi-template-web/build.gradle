@@ -32,7 +32,7 @@ tasks.war {
     doLast {
         println("${thisProjectName}[war doLast] deploy profile [" + currentProfile + "]")
         println GradleVersion.current()
-        println currentDate()
+        println rootProject.ext.currentDate()
     }
 }
 
