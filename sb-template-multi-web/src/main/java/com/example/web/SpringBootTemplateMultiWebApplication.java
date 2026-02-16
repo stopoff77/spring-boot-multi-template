@@ -29,22 +29,19 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 import com.example.cmmnlib.configuration.ComponentScanConfiguration;
 
-@EnableAutoConfiguration(exclude= {
+@EnableAutoConfiguration(exclude = {
         DataSourceAutoConfiguration.class // dataSource yml 설정시 제거
-      , MybatisAutoConfiguration.class    // mybatis yml 설정시 제거
-      , DataSourceTransactionManagerAutoConfiguration.class
-      , JndiDataSourceAutoConfiguration.class
-      , SecurityAutoConfiguration.class
-      , ManagementWebSecurityAutoConfiguration.class
-      , JacksonAutoConfiguration.class
-      , HttpClientMetricsAutoConfiguration.class // spring-boot-actuator-autoconfigure
+        , MybatisAutoConfiguration.class // mybatis yml 설정시 제거
+        , DataSourceTransactionManagerAutoConfiguration.class, JndiDataSourceAutoConfiguration.class,
+        SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class, JacksonAutoConfiguration.class,
+        HttpClientMetricsAutoConfiguration.class // spring-boot-actuator-autoconfigure
 //      , org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.class
 })
-@SpringBootApplication( scanBasePackageClasses = { ComponentScanConfiguration.class } )
-public class SpringBoot2MultiTemplateWebApplication  {
+@SpringBootApplication(scanBasePackageClasses = { ComponentScanConfiguration.class })
+public class SpringBootTemplateMultiWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBoot2MultiTemplateWebApplication.class, args);
+        SpringApplication.run(SpringBootTemplateMultiWebApplication.class, args);
     }
 
 }
