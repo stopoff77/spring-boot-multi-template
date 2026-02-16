@@ -261,9 +261,9 @@ subprojects {
 
 
 
-project(':sb2-multi-template-web') {
+project(':sb-template-multi-web') {
     dependencies {
-        implementation project(':sb2-multi-template-cmmnlib')
+        implementation project(':sb-template-multi-cmmnlib')
     }
 }
 

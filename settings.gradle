@@ -23,6 +23,6 @@ pluginManagement {
 rootProject.name = "${rootProjectName}" //'sb2-zRoot' (// FIXME CHECK-project name 확인)
 
 
-include 'sb2-multi-template-cmmnlib'
-include 'sb2-multi-template-web'
+include 'sb-template-multi-cmmnlib'
+include 'sb-template-multi-web'
 
