@@ -22,7 +22,6 @@ public class WebServletInitializer extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringBoot2MultiTemplateWebApplication.class);
+        return application.sources(SpringBootTemplateMultiWebApplication.class);
     }
-
 }
