@@ -21,8 +21,8 @@ import java.nio.charset.StandardCharsets;
 public class Project {
 
     // FIXME CHECK-package 확인 (공통 설정)
-    public static final String BASE_PKG   = "com.example";
-    public static final String BASE_PKG_2 = "com.sample";
+    public static final String BASE_PACKAGE   = "com.example";
+    public static final String BASE_PACKAGE_2 = "com.sample";
 
     /** context root path */
     public static final String CONTEXT_ROOT_PATH = "/";

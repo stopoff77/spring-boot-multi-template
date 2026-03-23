@@ -25,9 +25,9 @@ import com.example.cmmnlib.constants.Project;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ComponentScan              ( basePackages = { Project.BASE_PKG, Project.BASE_PKG_2 } )
-@ConfigurationPropertiesScan( basePackages = { Project.BASE_PKG, Project.BASE_PKG_2 } ) // @ConfigurationProperties Scan 설정
-@ServletComponentScan       ( basePackages = { Project.BASE_PKG, Project.BASE_PKG_2 } ) // @WebFilter, @WebListener, @WebServlet annotation 사용하기 위한 annotation
+@ComponentScan              ( basePackages = { Project.BASE_PACKAGE, Project.BASE_PACKAGE_2 } )
+@ConfigurationPropertiesScan( basePackages = { Project.BASE_PACKAGE, Project.BASE_PACKAGE_2 } ) // @ConfigurationProperties Scan 설정
+@ServletComponentScan       ( basePackages = { Project.BASE_PACKAGE, Project.BASE_PACKAGE_2 } ) // @WebFilter, @WebListener, @WebServlet annotation 사용하기 위한 annotation
 @Configuration
 public class ComponentScanConfiguration {
 
